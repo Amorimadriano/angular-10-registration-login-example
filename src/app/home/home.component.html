@@ -1,7 +1,36 @@
 ﻿<div class="p-4">
-    <div class="container">
-        <h1>Hi {{user.firstName}}!</h1>
-        <p>You're logged in with Angular 10!!</p>
-        <p><a routerLink="/users">Manage Users</a></p>
+
+    <div>
+        <h1>Olá {{user.firstName}}!</h1>
+        <p>Está logando com  Angular 10!!</p>
+        <p><a routerLink="/users">Gerenciar Usuários</a></p>
+       
     </div>
+    <div class="container">
+ 
+        <div class="hero-logo">
+            <div class="box">
+                <img src="assets/images/logos/angular/angular.svg" alt="Angular" width="250" height="250">
+            </div>
+            
+          </div>
+    </div>
+   
 </div>
+<style>
+    .container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center
+    }
+    .box {
+        width: 300px;
+        height: 300px;
+    }
+    body {
+       margin: 0px;
+}
+</style>

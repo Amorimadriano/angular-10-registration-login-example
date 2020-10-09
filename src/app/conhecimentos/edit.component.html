@@ -1,0 +1,31 @@
+﻿<h1 *ngIf="isAddMode">Adicionar Conhecimento</h1>
+<h1 *ngIf="!isAddMode">Editar Conhecimento</h1>
+
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" >
+    <div class="form-row">
+        <div class="form-group col">
+            <label for="titulo">titulo</label>
+            <input type="text" formControlName="titulo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.titulo.errors }"/>
+            <div *ngIf="submitted && f.titulo.errors" class="invalid-feedback">
+                <div *ngIf="f.titulo.errors.required">titulo é obrigatório</div>
+            </div>
+        </div>
+        <div class="form-group col">
+            <label for="descricao">descricao</label>
+            <input type="text" formControlName="descricao"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.descricao.errors }" />
+            <div *ngIf="submitted && f.descricao.errors" class="invalid-feedback">
+                <div *ngIf="f.descricao.errors.required">descricao é obrigatório</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Salvar
+        </button>
+        <a routerLink="/conhecimentos" class="btn btn-link">Cancelar</a>
+   
+    </div>
+</form>

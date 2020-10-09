@@ -1,0 +1,29 @@
+﻿<h1 *ngIf="isAddMode">Adicionar UF</h1>
+<h1 *ngIf="!isAddMode">Editar UF</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" >
+    <div class="form-row">
+        <div class="form-group col">
+            <label for="cep">CEP</label>
+            <input type="text" formControlName="cep" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cep.errors }" />
+            <div *ngIf="submitted && f.cep.errors" class="invalid-feedback">
+                <div *ngIf="f.cep.errors.required">Cep é obrigatório</div>
+            </div>
+        </div>
+        <div class="form-group col">
+            <label for="uf">UF</label>
+            <input type="text" formControlName="uf" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.uf.errors }" />
+            <div *ngIf="submitted && f.uf.errors" class="invalid-feedback">
+                <div *ngIf="f.numero.uf.required">UF é obrigatório</div>
+            </div>
+        </div>
+    </div>
+  
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Salvar
+        </button>
+        <a routerLink="/cidades" class="btn btn-link">Cancelar</a>
+   
+    </div>
+</form>

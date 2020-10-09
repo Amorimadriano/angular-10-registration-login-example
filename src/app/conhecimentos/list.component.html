@@ -1,0 +1,31 @@
+﻿<h1>Conhecimentos</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Adicionar Conhecimento</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 10%">Titulo</th>
+            <th style="width: 30%">Descrição</th>
+            <th style="width: 10%">File</th>
+         
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="conhec end of conhecimentos">
+            <td>{{conhec.titulo}}</td>
+            <td>{{conhec.descriao}}</td>
+            <td>{{conhec.file}}</td>
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{conhec.id}}" class="btn btn-sm btn-primary mr-1">Editar</a>
+                <button (click)="deleteConhecimento(conhec.id)" class="btn btn-sm btn-danger btn-delete-end" [disabled]="conhec.isDeleting">
+                    <span *ngIf="conhec.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!conhec.isDeleting">Deletar</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!conhecimentos">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>

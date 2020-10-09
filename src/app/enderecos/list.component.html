@@ -1,0 +1,34 @@
+﻿<h1>Endereços</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Adicionar Endereço</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 10%">Cep</th>
+            <th style="width: 30%">Logradouro</th>
+            <th style="width: 10%">Numero</th>
+            <th style="width: 30%">Bairro</th>
+            <th style="width: 10%">UF</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let end of enderecos">
+            <td>{{end.cep}}</td>
+            <td>{{end.logradouro}}</td>
+            <td>{{end.numero}}</td>
+            <td>{{end.bairro}}</td>
+            <td>{{end.uf}}</td>
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{end.id}}" class="btn btn-sm btn-primary mr-1">Editar</a>
+                <button (click)="deleteEndereco(end.id)" class="btn btn-sm btn-danger btn-delete-end" [disabled]="end.isDeleting">
+                    <span *ngIf="end.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!end.isDeleting">Deletar</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!enderecos">
+            <td colspan="6" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>

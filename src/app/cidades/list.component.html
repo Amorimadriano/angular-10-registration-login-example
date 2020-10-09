@@ -1,0 +1,28 @@
+﻿<h1>Cidades</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Adicionar UF</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 10%">Cep</th>
+            <th style="width: 10%">UF</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let end of cidades">
+            <td>{{end.cep}}</td>
+            <td>{{end.uf}}</td>
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{end.id}}" class="btn btn-sm btn-primary mr-1">Editar</a>
+                <button (click)="deleteUF(end.id)" class="btn btn-sm btn-danger btn-delete-end" [disabled]="end.isDeleting">
+                    <span *ngIf="end.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!end.isDeleting">Deletar</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!cidades">
+            <td colspan="6" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>

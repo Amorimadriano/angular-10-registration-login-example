@@ -17,6 +17,24 @@ export class AuthGuard implements CanActivate {
             return true;
         }
 
+        const endereco = this.accountService.enderecoValue;
+        if (endereco) {
+            // authorised so return true
+            return true;
+        }
+
+        const uf = this.accountService.ufValue;
+        if (uf) {
+            // authorised so return true
+            return true;
+        }
+
+        const conhecimento = this.accountService.conhecimentoValue;
+        if (conhecimento) {
+            // authorised so return true
+            return true;
+        }
+
         // not logged in so redirect to login page with the return url
         this.router.navigate(['/account/login'], { queryParams: { returnUrl: state.url }});
         return false;
